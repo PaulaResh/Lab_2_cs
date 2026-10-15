@@ -17,6 +17,8 @@
 3. Переопределить метод ToString(), возвращающий строку вида {X;Y} с использованием интерполяции строк.
 4. В методе Main создать три объекта Point с различными координатами и вывести их в консоль.
 
+## ТЕСТИРОВАНИЕ
+![](https://sun9-83.vkuserphoto.ru/s/v1/ig2/qOZqhlzYyWgVMwxp7kqr_LWgMXN2q08TS5_5S_BC-Rg8Ps1hV5efi5fSDJk4zCfCaPilxCjBGjOA5V_xo2pzUDwm7_FirQ.jpg?quality=95&as=32x22,48x33,72x49,108x73,160x108,240x163,323x219&from=bu&cs=323x0)
 
 # ЗАДАНИЕ 2. ЛИНИЯ
 
@@ -43,6 +45,8 @@
 5. Для пункта 4 изменять значения X и Y у существующих объектов Point (мутация объекта).
 6. Для пункта 5 заменить ссылку Start у линии 1 на новый объект Point — тогда линия 3 продолжит ссылаться на старый объект и не изменится.
 
+## ТЕСТИРОВАНИЕ
+![](https://sun9-8.vkuserphoto.ru/s/v1/ig2/LSnyI7EB0K1c_AYggUqcXlNmCNqdF6_-_74IXeZ8-_C5-YL-mcx3Jc4Pw5jo36SVUsaAwAgi-alGyRrVSv-8lCOa.jpg?quality=95&as=32x17,48x26,72x39,108x58,160x86,240x128,360x193,480x257,540x289,570x305&from=bu&u=KQKCHLnqhCGB364HduUtuSrS4tke6xdeIGYoFexCd8k&cs=570x0)
 
 # ЗАДАНИЕ 3. СТУДЕНТ
 
@@ -66,6 +70,8 @@
 3. При создании Пети присвоить vasya.Grades напрямую — это поверхностное копирование, копируется только ссылка на массив.
 4. При создании Андрея использовать метод Clone() для глубокого копирования массива — создаётся новый независимый массив.
 
+## ТЕСТИРОВАНИЕ
+![](https://sun9-81.vkuserphoto.ru/s/v1/ig2/hOP0PfpZ9oT-Q_K97dM8uxozIhck9eoQyjaWoxrGfg53K17B6abJo3Pvb9m5P_mLLKXxxJPqG5-XLFdDxIDZLqgm.jpg?quality=95&as=32x30,48x45,72x68,108x102,160x152,240x227,360x341,480x455,512x485&from=bu&u=lJEP8MtP7UZd2O6nr_3JvZAFj7COrj2MkmK2mxpld8U&cs=512x0)
 
 # ЗАДАНИЕ 4. МОДИФИЦИРОВАННЫЕ ТОЧКА И ЛИНИЯ
 
@@ -87,6 +93,11 @@
 1. В классе Point оставить только один конструктор с двумя параметрами — это гарантирует, что объект нельзя создать без указания обеих координат.
 2. В классе Line реализовать перегрузку конструкторов: один принимает два объекта Point, второй — четыре числа типа double и создаёт точки внутри себя.
 
+## ТЕСТИРОВАНИЕ
+### 4.1 
+![](https://sun9-4.vkuserphoto.ru/s/v1/ig2/zS1nWEuP0Lvo85z8dYxlq0yiUt16w38XgEwtbP4DX3lDBkyUJ7PncbFKV7iKzTHUkyoUOOBY_vtDebXev82lRDMlKWfxXQ.jpg?quality=95&as=32x10,48x16,72x23,108x35,160x52,240x78,360x116,439x142&from=bu&cs=439x0)
+### 4.2 
+![](https://sun9-71.vkuserphoto.ru/s/v1/ig2/xSGjCP7hHYO23VeQ-aZQWXCvfD58IEtPNdGwM0M_-WBr4p7gT58FfWOZkIzNoALXRtr45qaz0BI7b_MXc1XQyPfp.jpg?quality=95&as=32x10,48x15,72x22,108x34,160x50,240x75,350x109&from=bu&u=psAL9tr-qmDe2cSeKWdARPE-4sMXRWPoFQj9GHDNJtA&cs=350x0)
 
 # ЗАДАНИЕ 5. ДЛИНА ЛИНИИ
 
@@ -98,3 +109,6 @@
 
 1. Добавить метод GetLength(), вычисляющий расстояние по теореме Пифагора: √((x2-x1)² + (y2-y1)²).
 2. Результат округлить методом Math.Round() и привести к типу int.
+
+## ТЕСТИРОВАНИЕ
+![](https://sun9-50.vkuserphoto.ru/s/v1/ig2/uJ9odkj0HoiNXDQ90Zk9OirxjAUHXxzrRZ0GzIQs2VXm3REDG3rQ53HjLxke4Cp-acR53mXXMmaVNyPwd-ria1vOZSFFOg.jpg?quality=95&as=32x17,48x25,72x38,108x57,160x84,240x126,360x189,388x204&from=bu&u=JrlTyvn8VPGWe-wNM1LdSoIYyFzKc0JCQRzMwvDHGg4&cs=388x0)
