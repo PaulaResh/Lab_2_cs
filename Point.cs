@@ -1,16 +1,33 @@
-﻿public class Point
+using System;
+
+namespace LabWork
 {
-    public double X { get; set; }
-    public double Y { get; set; }
-
-    public Point(double x, double y)
+    public class Point : Shape
     {
-        X = x;
-        Y = y;
-    }
+        private double _x;
+        private double _y;
 
-    public override string ToString()
-    {
-        return $"{{{X};{Y}}}";
+        public double X
+        {
+            get { return _x; }
+            set { _x = value; }
+        }
+
+        public double Y
+        {
+            get { return _y; }
+            set { _y = value; }
+        }
+
+        public Point(double x, double y) : base("Точка")
+        {
+            _x = x;
+            _y = y;
+        }
+
+        public override string GetInfo()
+        {
+            return $"{{{X};{Y}}}";
+        }
     }
 }
