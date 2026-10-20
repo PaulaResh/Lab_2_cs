@@ -1,18 +1,28 @@
-﻿public class Student
+using System;
+
+namespace LabWork
 {
-    public string Name { get; set; }
-    public int[] Grades { get; set; }
-
-    public Student(string name, int[] grades)
+    public class Student : Person
     {
-        Name = name;
-        Grades = grades;
-    }
+        private int[] _grades;
 
-    //Имя: [оценка1, оценка2,…,оценкаN]
-    public override string ToString()
-    {
-        string gradesStr = string.Join(", ", Grades);
-        return $"{Name}: [{gradesStr}]";
+        public int[] Grades
+        {
+            get { return _grades; }
+            set { _grades = value; }
+        }
+
+        public Student(string name, int[] grades)
+            : base(name)
+        {
+            _grades = grades;
+        }
+
+        public override string ToString()
+        {
+            string gradesStr =
+                string.Join(", ", _grades);
+            return $"{Name}: [{gradesStr}]";
+        }
     }
 }
