@@ -1,203 +1,228 @@
-class Program
+using System;
+
+namespace LabWork
 {
-    static void Main()
+    class Program
     {
-        Console.WriteLine("ЗАДАНИЕ 1. Точка\n");
-
-        Console.WriteLine("Введите координаты первой точки:");
-        double x1 = InputHelper.ReadDouble("X: ");
-        double y1 = InputHelper.ReadDouble("Y: ");
-        Point point1 = new Point(x1, y1);
-
-        Console.WriteLine("\nВведите координаты второй точки:");
-        double x2 = InputHelper.ReadDouble("X: ");
-        double y2 = InputHelper.ReadDouble("Y: ");
-        Point point2 = new Point(x2, y2);
-
-        Console.WriteLine("\nВведите координаты третьей точки:");
-        double x3 = InputHelper.ReadDouble("X: ");
-        double y3 = InputHelper.ReadDouble("Y: ");
-        Point point3 = new Point(x3, y3);
-
-        Console.WriteLine("\nТекстовое представление точек:");
-        Console.WriteLine(point1);
-        Console.WriteLine(point2);
-        Console.WriteLine(point3);
-
-
-        //ЗАДАНИЕ 2
-        Console.WriteLine("\nЗАДАНИЕ 2. Линия\n");
-
-        Console.WriteLine("Введите координаты начала Линии 1:");
-        double l1_start_x = InputHelper.ReadDouble("X: ");
-        double l1_start_y = InputHelper.ReadDouble("Y: ");
-
-        Console.WriteLine("Введите координаты конца Линии 1:");
-        double l1_end_x = InputHelper.ReadDouble("X: ");
-        double l1_end_y = InputHelper.ReadDouble("Y: ");
-
-        Line line1 = new Line(new Point(l1_start_x, l1_start_y), new Point(l1_end_x, l1_end_y));
-
-        Console.WriteLine("\nВведите координаты начала Линии 2 (горизонтальной):");
-        double l2_start_x = InputHelper.ReadDouble("X начала: ");
-        double l2_y = InputHelper.ReadDouble("Y (высота): ");
-
-        Console.WriteLine("Введите координату X конца Линии 2:");
-        double l2_end_x = InputHelper.ReadDouble("X конца: ");
-
-        Line line2 = new Line(new Point(l2_start_x, l2_y), new Point(l2_end_x, l2_y));
-
-        Line line3 = new Line(line1.Start, line2.End);
-
-        Console.WriteLine("\nИзначальное состояние:");
-        Console.WriteLine($"1: {line1}");
-        Console.WriteLine($"2: {line2}");
-        Console.WriteLine($"3: {line3}");
-
-        Console.WriteLine("\nИзменение координат Линий 1 и 2");
-
-        Console.WriteLine("\nВведите новые координаты начала Линии 1:");
-        line1.Start.X = InputHelper.ReadDouble("X: ");
-        line1.Start.Y = InputHelper.ReadDouble("Y: ");
-
-        Console.WriteLine("\nВведите новые координаты конца Линии 2:");
-        line2.End.X = InputHelper.ReadDouble("X: ");
-        line2.End.Y = InputHelper.ReadDouble("Y: ");
-
-        Console.WriteLine("\nПосле изменения координат:");
-        Console.WriteLine($"1: {line1}");
-        Console.WriteLine($"2: {line2}");
-        Console.WriteLine($"3: {line3}");
-
-        Console.WriteLine("\nЗамена начальной точки Линии 1 (Линия 3 не изменится)");
-
-        Console.WriteLine("\nВведите координаты новой начальной точки Линии 1:");
-        double new_start_x = InputHelper.ReadDouble("X: ");
-        double new_start_y = InputHelper.ReadDouble("Y: ");
-
-        line1.Start = new Point(new_start_x, new_start_y);
-
-        Console.WriteLine("\nПосле замены начальной точки:");
-        Console.WriteLine($"1: {line1}");
-        Console.WriteLine($"3: {line3}");
-
-
-        //ЗАДАНИЕ 3
-        Console.WriteLine("\nЗАДАНИЕ 3. Студент\n");
-
-        Console.WriteLine("Создание студента Вася");
-        string vasyaName = "Вася";
-        int[] vasyaGrades = InputHelper.ReadGrades(vasyaName);
-        Student vasya = new Student(vasyaName, vasyaGrades);
-
-        Console.WriteLine("\nСоздание студента Петя (копирование оценок Васи)");
-        Student petya = new Student("Петя", vasya.Grades);
-
-        Console.WriteLine("\nВведите новую первую оценку для Пети:");
-        int newGrade = InputHelper.ReadInt("Оценка (от 2 до 5): ", false);
-        while (newGrade < 2 || newGrade > 5)
+        static void Main()
         {
-            Console.WriteLine("Ошибка: оценка должна быть от 2 до 5.");
-            newGrade = InputHelper.ReadInt("Оценка (от 2 до 5): ", false);
+            Console.OutputEncoding =
+                System.Text.Encoding.UTF8;
+
+            Console.WriteLine("Задание 1. Точка");
+            Point point1 = new Point(
+                InputHelper.ReadDouble("X 1-й точки: "),
+                InputHelper.ReadDouble("Y 1-й точки: "));
+            Point point2 = new Point(
+                InputHelper.ReadDouble("X 2-й точки: "),
+                InputHelper.ReadDouble("Y 2-й точки: "));
+            Point point3 = new Point(
+                InputHelper.ReadDouble("X 3-й точки: "),
+                InputHelper.ReadDouble("Y 3-й точки: "));
+
+            Console.WriteLine(point1);
+            Console.WriteLine(point2);
+            Console.WriteLine(point3);
+
+
+            Console.WriteLine("\nЗадание 2. Линия");
+            Line line1 = new Line(
+                new Point(
+                    InputHelper.ReadDouble(
+                        "Линия 1. X начала: "),
+                    InputHelper.ReadDouble(
+                        "Линия 1. Y начала: ")),
+                new Point(
+                    InputHelper.ReadDouble(
+                        "Линия 1. X конца: "),
+                    InputHelper.ReadDouble(
+                        "Линия 1. Y конца: ")));
+
+            double l2Y = InputHelper.ReadDouble(
+                "Линия 2. Высота (Y): ");
+            Line line2 = new Line(
+                new Point(
+                    InputHelper.ReadDouble(
+                        "Линия 2. X начала: "),
+                    l2Y),
+                new Point(
+                    InputHelper.ReadDouble(
+                        "Линия 2. X конца: "),
+                    l2Y));
+
+            Line line3 = new Line(
+                line1.Start, line2.End);
+
+            Console.WriteLine("Изначально:");
+            Console.WriteLine(line1);
+            Console.WriteLine(line2);
+            Console.WriteLine(line3);
+
+            Console.WriteLine(
+                "\nИзменение линий 1 и 2:");
+            line1.Start.X = InputHelper.ReadDouble(
+                "Новый X начала линии 1: ");
+            line1.Start.Y = InputHelper.ReadDouble(
+                "Новый Y начала линии 1: ");
+            line2.End.X = InputHelper.ReadDouble(
+                "Новый X конца линии 2: ");
+            line2.End.Y = InputHelper.ReadDouble(
+                "Новый Y конца линии 2: ");
+
+            Console.WriteLine(line1);
+            Console.WriteLine(line2);
+            Console.WriteLine(line3);
+
+            Console.WriteLine(
+                "\nЗамена начала линии 1 " +
+                "(линия 3 не изменится):");
+            line1.Start = new Point(
+                InputHelper.ReadDouble(
+                    "Новый X начала линии 1: "),
+                InputHelper.ReadDouble(
+                    "Новый Y начала линии 1: "));
+
+            Console.WriteLine(line1);
+            Console.WriteLine(line3);
+
+
+            Console.WriteLine(
+                "\nЗадание 3. Студент");
+            string vasyaName =
+                InputHelper.ReadString(
+                    "Имя первого студента: ");
+            Student vasya = new Student(
+                vasyaName,
+                InputHelper.ReadGrades(vasyaName));
+
+            Student petya = new Student(
+                "Петя", vasya.Grades);
+            int newGrade = InputHelper.ReadInt(
+                "Новая первая оценка Пети (2-5): ",
+                false);
+            while (newGrade < 2 || newGrade > 5)
+            {
+                Console.WriteLine(
+                    "Ошибка: оценка " +
+                    "должна быть от 2 до 5.");
+                newGrade = InputHelper.ReadInt(
+                    "Новая первая оценка (2-5): ",
+                    false);
+            }
+            petya.Grades[0] = newGrade;
+
+            Console.WriteLine(
+                "После изменения оценки Пети:");
+            Console.WriteLine(vasya);
+            Console.WriteLine(petya);
+            Console.WriteLine(
+                "Оба изменились, т.к. массив — " +
+                "ссылочный тип.");
+
+            Student andrey = new Student(
+                "Андрей",
+                (int[])vasya.Grades.Clone());
+            int vasyaGrade = InputHelper.ReadInt(
+                "Новая вторая оценка Васи (2-5): ",
+                false);
+            while (vasyaGrade < 2
+                   || vasyaGrade > 5)
+            {
+                Console.WriteLine(
+                    "Ошибка: оценка " +
+                    "должна быть от 2 до 5.");
+                vasyaGrade = InputHelper.ReadInt(
+                    "Новая вторая оценка (2-5): ",
+                    false);
+            }
+            vasya.Grades[1] = vasyaGrade;
+
+            Console.WriteLine(
+                "После изменения оценки Васи:");
+            Console.WriteLine(vasya);
+            Console.WriteLine(andrey);
+
+
+            Console.WriteLine(
+                "\nЗадание 4. " +
+                "Модифицированные Точка и Линия");
+            Point p4_1 = new Point(
+                InputHelper.ReadDouble(
+                    "Точка 4.1 #1 X: "),
+                InputHelper.ReadDouble(
+                    "Точка 4.1 #1 Y: "));
+            Point p4_2 = new Point(
+                InputHelper.ReadDouble(
+                    "Точка 4.1 #2 X: "),
+                InputHelper.ReadDouble(
+                    "Точка 4.1 #2 Y: "));
+            Point p4_3 = new Point(
+                InputHelper.ReadDouble(
+                    "Точка 4.1 #3 X: "),
+                InputHelper.ReadDouble(
+                    "Точка 4.1 #3 Y: "));
+
+            Console.WriteLine(p4_1);
+            Console.WriteLine(p4_2);
+            Console.WriteLine(p4_3);
+
+            Line line4_1 = new Line(
+                new Point(
+                    InputHelper.ReadDouble(
+                        "Линия 4.2 #1 X начала: "),
+                    InputHelper.ReadDouble(
+                        "Линия 4.2 #1 Y начала: ")),
+                new Point(
+                    InputHelper.ReadDouble(
+                        "Линия 4.2 #1 X конца: "),
+                    InputHelper.ReadDouble(
+                        "Линия 4.2 #1 Y конца: ")));
+
+            Line line4_2 = new Line(
+                InputHelper.ReadDouble(
+                    "Линия 4.2 #2 X1: "),
+                InputHelper.ReadDouble(
+                    "Линия 4.2 #2 Y1: "),
+                InputHelper.ReadDouble(
+                    "Линия 4.2 #2 X2: "),
+                InputHelper.ReadDouble(
+                    "Линия 4.2 #2 Y2: "));
+
+            Line line4_3 = new Line(
+                line4_1.Start, line4_2.End);
+
+            Console.WriteLine(line4_1);
+            Console.WriteLine(line4_2);
+            Console.WriteLine(line4_3);
+
+
+            Console.WriteLine(
+                "\nЗадание 5. Длина линии");
+            Line line5 = new Line(
+                InputHelper.ReadDouble("X начала: "),
+                InputHelper.ReadDouble("Y начала: "),
+                InputHelper.ReadDouble("X конца: "),
+                InputHelper.ReadDouble("Y конца: "));
+
+            Console.WriteLine(line5);
+            Console.WriteLine(
+                $"Длина: {line5.GetLength()}");
+
+
+            Console.WriteLine(
+                "\nДемонстрация наследования:");
+            Shape[] shapes = new Shape[]
+            { point1, line1, p4_2, line4_1 };
+            foreach (Shape shape in shapes)
+            {
+                Console.WriteLine(
+                    $"{shape.GetType().Name}: " +
+                    $"{shape}");
+            }
+
+            Console.WriteLine(
+                "\nНажмите любую клавишу...");
+            Console.ReadKey();
         }
-
-        petya.Grades[0] = newGrade;
-
-        Console.WriteLine("\nРезультат после изменения оценки Пети:");
-        Console.WriteLine($"Вася: {vasya}");
-        Console.WriteLine($"Петя: {petya}");
-
-        Console.WriteLine("\nСоздание студента Андрей (независимая копия оценок)");
-        Student andrey = new Student("Андрей", (int[])vasya.Grades.Clone());
-
-        Console.WriteLine("\nВведите новую вторую оценку для Васи:");
-        int vasyaNewGrade = InputHelper.ReadInt("Оценка (от 2 до 5): ", false);
-        while (vasyaNewGrade < 2 || vasyaNewGrade > 5)
-        {
-            Console.WriteLine("Ошибка: оценка должна быть от 2 до 5.");
-            vasyaNewGrade = InputHelper.ReadInt("Оценка (от 2 до 5): ", false);
-        }
-
-        vasya.Grades[1] = vasyaNewGrade;
-
-        Console.WriteLine("\nПосле изменения оценки у Васи (Андрей не пострадал):");
-        Console.WriteLine($"Вася:   {vasya}");
-        Console.WriteLine($"Андрей: {andrey}");
-
-
-        //ЗАДАНИЕ 4
-        Console.WriteLine("\nЗАДАНИЕ 4. Модифицированные Точка и Линия\n");
-
-        // 4.1. Создание точек
-        Console.WriteLine("4.1. Создание точек");
-
-        Console.WriteLine("\nВведите координаты первой точки (Задание 4.1):");
-        double p4_1_x = InputHelper.ReadDouble("X: ");
-        double p4_1_y = InputHelper.ReadDouble("Y: ");
-        Point p4_point1 = new Point(p4_1_x, p4_1_y);
-
-        Console.WriteLine("\nВведите координаты второй точки (Задание 4.1):");
-        double p4_2_x = InputHelper.ReadDouble("X: ");
-        double p4_2_y = InputHelper.ReadDouble("Y: ");
-        Point p4_point2 = new Point(p4_2_x, p4_2_y);
-
-        Console.WriteLine("\nВведите координаты третьей точки (Задание 4.1):");
-        double p4_3_x = InputHelper.ReadDouble("X: ");
-        double p4_3_y = InputHelper.ReadDouble("Y: ");
-        Point p4_point3 = new Point(p4_3_x, p4_3_y);
-
-        Console.WriteLine("\nСозданные точки:");
-        Console.WriteLine(p4_point1);
-        Console.WriteLine(p4_point2);
-        Console.WriteLine(p4_point3);
-
-        // 4.2. Создание линий
-        Console.WriteLine("\n4.2. Создание линий");
-
-        Console.WriteLine("\nВведите координаты начала Линии 1 (Задание 4.2):");
-        double l4_1_start_x = InputHelper.ReadDouble("X: ");
-        double l4_1_start_y = InputHelper.ReadDouble("Y: ");
-
-        Console.WriteLine("Введите координаты конца Линии 1:");
-        double l4_1_end_x = InputHelper.ReadDouble("X: ");
-        double l4_1_end_y = InputHelper.ReadDouble("Y: ");
-
-        Line line4_1 = new Line(new Point(l4_1_start_x, l4_1_start_y), new Point(l4_1_end_x, l4_1_end_y));
-
-        Console.WriteLine("\nВведите координаты начала Линии 2 (через 4 числа):");
-        double l4_2_x1 = InputHelper.ReadDouble("X1: ");
-        double l4_2_y1 = InputHelper.ReadDouble("Y1: ");
-        double l4_2_x2 = InputHelper.ReadDouble("X2: ");
-        double l4_2_y2 = InputHelper.ReadDouble("Y2: ");
-
-        Line line4_2 = new Line(l4_2_x1, l4_2_y1, l4_2_x2, l4_2_y2);
-
-        Line line4_3 = new Line(line4_1.Start, line4_2.End);
-
-        Console.WriteLine("\nСозданные линии:");
-        Console.WriteLine($"Линия 1: {line4_1}");
-        Console.WriteLine($"Линия 2: {line4_2}");
-        Console.WriteLine($"Линия 3: {line4_3}");
-
-
-        //ЗАДАНИЕ 5
-        Console.WriteLine("\nЗАДАНИЕ 5. Длина Линии\n");
-
-        Console.WriteLine("Введите координаты начала линии:");
-        double l5_start_x = InputHelper.ReadDouble("X: ");
-        double l5_start_y = InputHelper.ReadDouble("Y: ");
-
-        Console.WriteLine("\nВведите координаты конца линии:");
-        double l5_end_x = InputHelper.ReadDouble("X: ");
-        double l5_end_y = InputHelper.ReadDouble("Y: ");
-
-        Line line5 = new Line(l5_start_x, l5_start_y, l5_end_x, l5_end_y);
-
-        Console.WriteLine($"\nСозданная линия: {line5}");
-        Console.WriteLine($"Длина линии: {line5.GetLength()}");
-
-
-        Console.WriteLine("\n[Нажмите любую клавишу для завершения...]");
-        Console.ReadKey();
     }
 }
