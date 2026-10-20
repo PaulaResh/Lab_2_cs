@@ -1,91 +1,128 @@
-﻿public static class InputHelper
+using System;
+
+namespace LabWork
 {
-    public static int ReadInt(string prompt, bool allowNegative = true)
+    public static class InputHelper
     {
-        while (true)
+        public static int ReadInt(
+            string prompt,
+            bool allowNegative = true)
         {
-            Console.Write(prompt);
-            string input = Console.ReadLine();
-
-            if (int.TryParse(input, out int result))
+            while (true)
             {
-                if (!allowNegative && result < 0)
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (int.TryParse(
+                        input, out int result))
                 {
-                    Console.WriteLine("Ошибка: число не может быть отрицательным. Попробуйте снова.");
-                    continue;
+                    if (!allowNegative
+                        && result < 0)
+                    {
+                        Console.WriteLine(
+                            "Ошибка: число " +
+                            "не может быть " +
+                            "отрицательным.");
+                        continue;
+                    }
+                    return result;
                 }
-                return result;
-            }
-            else
-            {
-                Console.WriteLine("Ошибка: введено некорректное число. Попробуйте снова.");
-            }
-        }
-    }
-
-    public static double ReadDouble(string prompt, bool allowNegative = true)
-    {
-        while (true)
-        {
-            Console.Write(prompt);
-            string input = Console.ReadLine();
-
-            if (double.TryParse(input, out double result))
-            {
-                if (!allowNegative && result < 0)
+                else
                 {
-                    Console.WriteLine("Ошибка: число не может быть отрицательным. Попробуйте снова.");
-                    continue;
+                    Console.WriteLine(
+                        "Ошибка: введено " +
+                        "некорректное число.");
                 }
-                return result;
-            }
-            else
-            {
-                Console.WriteLine("Ошибка: введено некорректное число. Попробуйте снова.");
             }
         }
-    }
-    public static string ReadString(string prompt)
-    {
-        while (true)
+
+        public static double ReadDouble(
+            string prompt,
+            bool allowNegative = true)
         {
-            Console.Write(prompt);
-            string input = Console.ReadLine();
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
 
-            if (!string.IsNullOrWhiteSpace(input))
-            {
-                return input;
-            }
-            else
-            {
-                Console.WriteLine("Ошибка: строка не может быть пустой. Попробуйте снова.");
+                if (double.TryParse(
+                        input, out double result))
+                {
+                    if (!allowNegative
+                        && result < 0)
+                    {
+                        Console.WriteLine(
+                            "Ошибка: число " +
+                            "не может быть " +
+                            "отрицательным.");
+                        continue;
+                    }
+                    return result;
+                }
+                else
+                {
+                    Console.WriteLine(
+                        "Ошибка: введено " +
+                        "некорректное число.");
+                }
             }
         }
-    }
-    public static int[] ReadGrades(string studentName)
-    {
-        Console.WriteLine($"\nВвод оценок для студента {studentName}:");
-        int count = ReadInt("Введите количество оценок: ", false);
 
-        if (count == 0)
+        public static string ReadString(
+            string prompt)
         {
-            Console.WriteLine("Предупреждение: количество оценок равно 0.");
-            return new int[0];
-        }
-
-        int[] grades = new int[count];
-        for (int i = 0; i < count; i++)
-        {
-            grades[i] = ReadInt($"Введите оценку #{i + 1} (от 2 до 5): ", false);
-
-            // Дополнительная проверка диапазона оценок
-            while (grades[i] < 2 || grades[i] > 5)
+            while (true)
             {
-                Console.WriteLine("Ошибка: оценка должна быть от 2 до 5. Попробуйте снова.");
-                grades[i] = ReadInt($"Введите оценку #{i + 1} (от 2 до 5): ", false);
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    return input;
+                }
+                else
+                {
+                    Console.WriteLine(
+                        "Ошибка: строка " +
+                        "не может быть пустой.");
+                }
             }
         }
 
-        return grades;
+        public static int[] ReadGrades(
+            string studentName)
+        {
+            Console.WriteLine(
+                $"Ввод оценок для " +
+                $"{studentName}:");
+            int count = ReadInt(
+                "Количество оценок: ", false);
+
+            if (count == 0)
+            {
+                return new int[0];
+            }
+
+            int[] grades = new int[count];
+            for (int i = 0; i < count; i++)
+            {
+                grades[i] = ReadInt(
+                    $"Оценка #{i + 1} (2-5): ",
+                    false);
+
+                while (grades[i] < 2
+                       || grades[i] > 5)
+                {
+                    Console.WriteLine(
+                        "Ошибка: оценка " +
+                        "должна быть от 2 до 5.");
+                    grades[i] = ReadInt(
+                        $"Оценка #{i + 1} (2-5): ",
+                        false);
+                }
+            }
+
+            return grades;
+        }
     }
 }
